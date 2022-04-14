@@ -60,5 +60,6 @@ public class Zone : Buildable
     protected override void OnDestroy()
     {
         // Overriden so the position is not removed from the building hashset
+        // TEST
     }
 }
