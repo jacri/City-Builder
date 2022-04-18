@@ -144,6 +144,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6964560605190807191, guid: 6dc520c404c01d54dba2ae6039949ed3, type: 3}
   m_PrefabInstance: {fileID: 2351514205025836539}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &696479293 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7109788633388805135, guid: 7ee13d5bbf62c834392ee1aa671a9b75, type: 3}
+  m_PrefabInstance: {fileID: 7109788633341016731}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +397,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8700646756023514077, guid: 305861806e5a5e9489d365ca5c27b0d0, type: 3}
   m_PrefabInstance: {fileID: 8700646754405210363}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1640324834 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7109788633117369330, guid: 7ee13d5bbf62c834392ee1aa671a9b75, type: 3}
+  m_PrefabInstance: {fileID: 7109788633341016731}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1655749190 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7109788633246949238, guid: 7ee13d5bbf62c834392ee1aa671a9b75, type: 3}
+  m_PrefabInstance: {fileID: 7109788633341016731}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1678217712 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8700646756083157259, guid: 305861806e5a5e9489d365ca5c27b0d0, type: 3}
@@ -785,11 +818,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3867266851683121315, guid: 7155cd4ffd8a22848a13e0421d8b5141, type: 3}
       propertyPath: comWeight
-      value: 1.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3867266851683121315, guid: 7155cd4ffd8a22848a13e0421d8b5141, type: 3}
       propertyPath: indWeight
-      value: 0.75
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3867266851683121315, guid: 7155cd4ffd8a22848a13e0421d8b5141, type: 3}
       propertyPath: moneyText
@@ -797,7 +830,7 @@ PrefabInstance:
       objectReference: {fileID: 1573475579}
     - target: {fileID: 3867266851683121315, guid: 7155cd4ffd8a22848a13e0421d8b5141, type: 3}
       propertyPath: resWeight
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3867266851683121315, guid: 7155cd4ffd8a22848a13e0421d8b5141, type: 3}
       propertyPath: speedText
@@ -805,16 +838,28 @@ PrefabInstance:
       objectReference: {fileID: 385937706}
     - target: {fileID: 3867266851683121315, guid: 7155cd4ffd8a22848a13e0421d8b5141, type: 3}
       propertyPath: population
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3867266851683121315, guid: 7155cd4ffd8a22848a13e0421d8b5141, type: 3}
       propertyPath: comBuildings
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3867266851683121315, guid: 7155cd4ffd8a22848a13e0421d8b5141, type: 3}
       propertyPath: indBuildings
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3867266851683121315, guid: 7155cd4ffd8a22848a13e0421d8b5141, type: 3}
+      propertyPath: comDemandSlider
+      value: 
+      objectReference: {fileID: 1655749190}
+    - target: {fileID: 3867266851683121315, guid: 7155cd4ffd8a22848a13e0421d8b5141, type: 3}
+      propertyPath: indDemandSlider
+      value: 
+      objectReference: {fileID: 1640324834}
+    - target: {fileID: 3867266851683121315, guid: 7155cd4ffd8a22848a13e0421d8b5141, type: 3}
+      propertyPath: resDemandSlider
+      value: 
+      objectReference: {fileID: 696479293}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7155cd4ffd8a22848a13e0421d8b5141, type: 3}
 --- !u!114 &3867266851683121315 stripped
