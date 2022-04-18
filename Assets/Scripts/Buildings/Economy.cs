@@ -51,16 +51,11 @@ public class Economy : MonoBehaviour
         UpdateMoneyText();
         date = DateTime.Now;
         UpdateDemand();
+        
         StartCoroutine(KeepTime());
     }
 
     // ===== Public Functions =====================================================================
-
-    public void AddMoney (int amnt) 
-    {
-        money += amnt;
-        UpdateMoneyText();
-    }
 
     public void CollectTaxes () 
     {
