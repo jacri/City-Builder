@@ -51,6 +51,8 @@ public class Zone : Buildable
         GameObject building = Instantiate(buildingList.RandomBuilding(type), transform.position, Quaternion.identity, buildingList.Parent(type));
         building.GetComponent<Buildable>().GetAdjacent();
 
+        FindObjectOfType<Economy>().BuildZone(type, 1);
+
         Destroy(conInd);
         Destroy(gameObject);
     }
@@ -60,6 +62,5 @@ public class Zone : Buildable
     protected override void OnDestroy()
     {
         // Overriden so the position is not removed from the building hashset
-        // TEST
     }
 }

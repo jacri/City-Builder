@@ -20,11 +20,8 @@ public class Economy : MonoBehaviour
     [Header("Demand")]
 
     public float resDemand;
-    public float resWeight;
     public float comDemand;
-    public float comWeight;
     public float indDemand;
-    public float indWeight;
 
     [Space(10)]
     [Header("Time")]
@@ -38,6 +35,9 @@ public class Economy : MonoBehaviour
     public Text dayText;
     public Text moneyText;
     public Text speedText;
+    public Slider resDemandSlider;
+    public Slider comDemandSlider;
+    public Slider indDemandSlider;
 
 
     // ===== Private Variables ====================================================================
@@ -70,6 +70,21 @@ public class Economy : MonoBehaviour
                         (indBuildings * indTaxRate));
         UpdateMoneyText();
     }
+
+    public void BuildZone (Zone.Type type, int size)
+    {
+        if (type == Zone.Type.Residential)
+            IncreasePopulation(size);
+
+        else if (type == Zone.Type.Commercial)
+            BuildComBuilding(size);
+
+        else if (type == Zone.Type.Industrial)
+            BuildIndBuilding(size);
+
+        UpdateDemand();
+    }
+
     public void IncreasePopulation (int amnt) 
     { 
         population += amnt;
@@ -88,13 +103,25 @@ public class Economy : MonoBehaviour
 
     public void UpdateDemand ()
     {
-        float totalBuildings = (population * resWeight) + (comBuildings * comWeight) + (indBuildings * indWeight);
+        float totalBuildings = population + comBuildings + indBuildings;
 
-        resDemand = (population * resWeight) / totalBuildings;
-        comDemand = (comBuildings * comWeight) / totalBuildings;
-        indDemand = (indBuildings * indWeight) / totalBuildings;
+        if (totalBuildings == 0)
+        {
+            resDemand = 1;
+            comDemand = 0;
+            indDemand = 0;
+        }
 
-        Debug.Log(resDemand + "; " + comDemand + "; " + indDemand);
+        else
+        {
+            resDemand = (totalBuildings - population) / totalBuildings;
+            comDemand = (population - comBuildings) / totalBuildings;
+            indDemand = (population - indBuildings) / totalBuildings;
+        }
+
+        resDemandSlider.value = resDemand;
+        comDemandSlider.value = comDemand;
+        indDemandSlider.value = indDemand;
     }
 
     // ===== Private Functions ====================================================================
@@ -109,6 +136,7 @@ public class Economy : MonoBehaviour
                 CollectTaxes();
 
             dayText.text = date.ToString("dd / MMM / yyyy");
+
             yield return new WaitForSeconds(dayLength / speed);
         }
     }
