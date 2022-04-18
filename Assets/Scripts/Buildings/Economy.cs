@@ -51,7 +51,7 @@ public class Economy : MonoBehaviour
         UpdateMoneyText();
         date = DateTime.Now;
         UpdateDemand();
-        
+
         StartCoroutine(KeepTime());
     }
 
@@ -66,28 +66,28 @@ public class Economy : MonoBehaviour
         UpdateMoneyText();
     }
 
-    public void BuildZone (Zone.Type type, int size)
+    public void BuildZone (Zone.Type type)
     {
         if (type == Zone.Type.Residential)
-            IncreasePopulation(size);
+            IncreasePopulation();
 
         else if (type == Zone.Type.Commercial)
-            BuildComBuilding(size);
+            BuildComBuilding();
 
         else if (type == Zone.Type.Industrial)
-            BuildIndBuilding(size);
+            BuildIndBuilding();
 
         UpdateDemand();
     }
 
-    public void IncreasePopulation (int amnt) 
+    public void IncreasePopulation () 
     { 
-        population += amnt;
+        population++;
         UpdateMoneyText();
     }
 
-    public void BuildComBuilding (int size) => comBuildings += size;
-    public void BuildIndBuilding (int size) => indBuildings += size;
+    public void BuildComBuilding () => comBuildings++;
+    public void BuildIndBuilding () => indBuildings++;
     public void UpdateMoneyText () => moneyText.text = String.Format("{0:# ### ### ###}", money);
     
     public void IncreaseSpeed ()

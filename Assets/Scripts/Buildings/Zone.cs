@@ -51,7 +51,7 @@ public class Zone : Buildable
         GameObject building = Instantiate(buildingList.RandomBuilding(type), transform.position, Quaternion.identity, buildingList.Parent(type));
         building.GetComponent<Buildable>().GetAdjacent();
 
-        FindObjectOfType<Economy>().BuildZone(type, 1);
+        FindObjectOfType<Economy>().BuildZone(type);
 
         Destroy(conInd);
         Destroy(gameObject);
