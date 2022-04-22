@@ -66,28 +66,28 @@ public class Economy : MonoBehaviour
         UpdateMoneyText();
     }
 
-    public void BuildZone (Zone.Type type)
+    public void BuildZone (Zone.Type type, int density)
     {
         if (type == Zone.Type.Residential)
-            IncreasePopulation();
+            IncreasePopulation(density);
 
         else if (type == Zone.Type.Commercial)
-            BuildComBuilding();
+            BuildComBuilding(density);
 
         else if (type == Zone.Type.Industrial)
-            BuildIndBuilding();
+            BuildIndBuilding(density);
 
         UpdateDemand();
     }
 
-    public void IncreasePopulation () 
+    public void IncreasePopulation (int density) 
     { 
-        population++;
+        population += density;
         UpdateMoneyText();
     }
 
-    public void BuildComBuilding () => comBuildings++;
-    public void BuildIndBuilding () => indBuildings++;
+    public void BuildComBuilding (int density) => comBuildings += density;
+    public void BuildIndBuilding (int density) => indBuildings += density;
     public void UpdateMoneyText () => moneyText.text = String.Format("{0:# ### ### ###}", money);
     
     public void IncreaseSpeed ()

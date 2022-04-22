@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Zone : Buildable
 {
@@ -17,6 +18,15 @@ public class Zone : Buildable
     public float minConstructionTime;
     public float maxConstructionTime;
     public GameObject constructionIndicator;
+
+    // ===== Public Static Variables ==============================================================
+
+    public static Dictionary<Type, int> zoneDensity = new Dictionary<Type, int>() 
+    {
+        { Type.Residential, 1 },
+        { Type.Commercial,  1 },
+        { Type.Industrial,  1 }
+    };
 
     // ===== Protected Variables ==================================================================
 
@@ -51,7 +61,7 @@ public class Zone : Buildable
         GameObject building = Instantiate(buildingList.RandomBuilding(type), transform.position, Quaternion.identity, buildingList.Parent(type));
         building.GetComponent<Buildable>().GetAdjacent();
 
-        FindObjectOfType<Economy>().BuildZone(type);
+        FindObjectOfType<Economy>().BuildZone(type, zoneDensity[type]);
 
         Destroy(conInd);
         Destroy(gameObject);
