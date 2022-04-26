@@ -72,11 +72,14 @@ MonoBehaviour:
   road: {fileID: 5489964550349115785, guid: 4415abbb6a58cb8469d8efacabdc3e3e, type: 3}
   roadOffset: {x: 0, y: 0.6, z: 0}
   roadParent: {fileID: 0}
-  resZone: {fileID: 7575141461540783668, guid: d28a8494ce63b8c4ebe53ebdf2a069f7, type: 3}
-  comZone: {fileID: 3498474683881613594, guid: f8f08a3f5e4417c488c00a4969b732c9, type: 3}
-  indZone: {fileID: 947421037326714269, guid: c7e4e724e98420e4696da9fe2cd15864, type: 3}
   zoneOffset: {x: 0, y: 0.6, z: 0}
   zoneParent: {fileID: 0}
+  lowDensityCommercialZone: {fileID: 3498474683881613594, guid: f8f08a3f5e4417c488c00a4969b732c9, type: 3}
+  lowDensityIndustrialZone: {fileID: 947421037326714269, guid: c7e4e724e98420e4696da9fe2cd15864, type: 3}
+  lowDensityResidentialZone: {fileID: 7575141461540783668, guid: d28a8494ce63b8c4ebe53ebdf2a069f7, type: 3}
+  highDensityCommercialZone: {fileID: 0}
+  highDensityIndustrialZone: {fileID: 0}
+  highDensityResidentialZone: {fileID: 0}
 --- !u!114 &3867266851623830050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,24 +107,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96fefcfc18d5b4e46bbd42cd5c075393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 0
+  money: 10000
   population: 0
   comBuildings: 0
   indBuildings: 0
-  resTaxRate: 0
   comTaxRate: 0
   indTaxRate: 0
+  resTaxRate: 0
   resDemand: 0
-  resWeight: 0
-  comDemand: 0
-  comWeight: 0
   indDemand: 0
-  indWeight: 0
+  comDemand: 0
   speed: 1
   dayLength: 1.5
   dayText: {fileID: 0}
+  popText: {fileID: 0}
   moneyText: {fileID: 0}
   speedText: {fileID: 0}
+  comDemandSlider: {fileID: 0}
+  indDemandSlider: {fileID: 0}
+  resDemandSlider: {fileID: 0}
 --- !u!1 &3867266852641969616
 GameObject:
   m_ObjectHideFlags: 0

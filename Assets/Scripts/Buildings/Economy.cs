@@ -37,6 +37,7 @@ public class Economy : MonoBehaviour
     [Header("UI")]
 
     public Text dayText;
+    public Text popText;
     public Text moneyText;
     public Text speedText;
     public Slider comDemandSlider;
@@ -89,11 +90,12 @@ public class Economy : MonoBehaviour
     public void IncreasePopulation (int density) 
     { 
         population += density;
-        UpdateMoneyText();
+        UpdatePopulationText();
     }
 
     // ===== UI ===================================================================================
 
+    public void UpdatePopulationText () => popText.text = String.Format("{0:# ### ### ###}", population);
     public void UpdateMoneyText () => moneyText.text = String.Format("{0:# ### ### ###}", money);
     
     public void IncreaseSpeed ()
