@@ -23,13 +23,24 @@ public class BuildingManager : MonoBehaviour
     public Transform roadParent;
 
     [Space(10)]
-    [Header("Zones")]
+    [Header("Zones Settings")]
 
-    public GameObject resZone;
-    public GameObject comZone;
-    public GameObject indZone;
     public Vector3 zoneOffset;
     public Transform zoneParent;
+
+    [Space(10)]
+    [Header("Low Density Zones")]
+
+    public GameObject lowDensityCommercialZone;
+    public GameObject lowDensityIndustrialZone;
+    public GameObject lowDensityResidentialZone;
+
+    [Space(10)]
+    [Header("High Density Zones")]
+
+    public GameObject highDensityCommercialZone;
+    public GameObject highDensityIndustrialZone;
+    public GameObject highDensityResidentialZone;
 
     // ===== Public Static Variables ==============================================================
 
@@ -80,7 +91,7 @@ public class BuildingManager : MonoBehaviour
             {
                 ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-                if (Physics.Raycast(ray, out hit) && (hit.collider.name.Contains("Ground") || hit.collider.name.Contains("Tile")) && !EventSystem.current.IsPointerOverGameObject())
+                if (Physics.Raycast(ray, out hit) && hit.collider.name.Contains("Ground") && !EventSystem.current.IsPointerOverGameObject())
                 {
                     pos = Vector3Int.RoundToInt(hit.point) + offset;
 
@@ -120,10 +131,15 @@ public class BuildingManager : MonoBehaviour
 
         GameObject zone = typeString switch 
         {
-            "Commercial"  => comZone,
-            "Residential" => resZone, 
-            "Industrial"  => indZone,
-            _ => throw new Exception("Error - please use valid zone type"),
+            "LowDensityCommercial"  => lowDensityCommercialZone,
+            "LowDensityIndustrial"  => lowDensityIndustrialZone,
+            "LowDensityResidential" => lowDensityResidentialZone, 
+
+            "HighDensityCommercial"  => highDensityCommercialZone,
+            "HighDensityIndustrial"  => highDensityIndustrialZone,
+            "HighDensityResidential" => highDensityResidentialZone, 
+
+            _ => throw new System.ArgumentException("Error - please use valid zone type"),
         };
 
         StartCoroutine(BuildMutliple(zoneOffset, zone, zoneParent, FinishZoneFn));

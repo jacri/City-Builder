@@ -12,16 +12,20 @@ public class Economy : MonoBehaviour
     public int population;
     public int comBuildings;
     public int indBuildings;
-    public float resTaxRate;
+
+    [Space(10)]
+    [Header("Taxes")]
+
     public float comTaxRate;
     public float indTaxRate;
+    public float resTaxRate;
     
     [Space(10)]
     [Header("Demand")]
 
     public float resDemand;
-    public float comDemand;
     public float indDemand;
+    public float comDemand;
 
     [Space(10)]
     [Header("Time")]
@@ -35,9 +39,9 @@ public class Economy : MonoBehaviour
     public Text dayText;
     public Text moneyText;
     public Text speedText;
-    public Slider resDemandSlider;
     public Slider comDemandSlider;
     public Slider indDemandSlider;
+    public Slider resDemandSlider;
 
 
     // ===== Private Variables ====================================================================
@@ -68,26 +72,28 @@ public class Economy : MonoBehaviour
 
     public void BuildZone (Zone.Type type, int density)
     {
-        if (type == Zone.Type.Residential)
-            IncreasePopulation(density);
-
-        else if (type == Zone.Type.Commercial)
+        if (Zone.IsCommercial(type))
             BuildComBuilding(density);
 
-        else if (type == Zone.Type.Industrial)
+        else if (Zone.IsIndustrial(type))
             BuildIndBuilding(density);
+
+        else if (Zone.IsResidential(type))
+            IncreasePopulation(density);
 
         UpdateDemand();
     }
 
+    public void BuildComBuilding (int density) => comBuildings += density;
+    public void BuildIndBuilding (int density) => indBuildings += density;
     public void IncreasePopulation (int density) 
     { 
         population += density;
         UpdateMoneyText();
     }
 
-    public void BuildComBuilding (int density) => comBuildings += density;
-    public void BuildIndBuilding (int density) => indBuildings += density;
+    // ===== UI ===================================================================================
+
     public void UpdateMoneyText () => moneyText.text = String.Format("{0:# ### ### ###}", money);
     
     public void IncreaseSpeed ()

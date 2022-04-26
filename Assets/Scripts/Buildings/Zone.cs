@@ -6,7 +6,18 @@ public class Zone : Buildable
 {
     // ===== Enumerations =========================================================================
 
-    public enum Type { Commercial, Residential, Industrial }
+    public enum Type 
+    { 
+        LowDensityCommercial,
+        HighDensityCommercial,
+
+
+        LowDensityIndustrial,
+        HighDensityIndustrial,
+
+        LowDensityResidential,
+        HighDensityResidential,
+    }
 
     // ===== Public Variables =====================================================================
 
@@ -23,9 +34,13 @@ public class Zone : Buildable
 
     public static Dictionary<Type, int> zoneDensity = new Dictionary<Type, int>() 
     {
-        { Type.Residential, 1 },
-        { Type.Commercial,  1 },
-        { Type.Industrial,  1 }
+        { Type.LowDensityCommercial,  1 },
+        { Type.LowDensityIndustrial,  1 },
+        { Type.LowDensityResidential, 1 },
+
+        { Type.HighDensityCommercial,  2 },
+        { Type.HighDensityIndustrial,  2 },
+        { Type.HighDensityResidential, 2 },
     };
 
     // ===== Protected Variables ==================================================================
@@ -47,6 +62,12 @@ public class Zone : Buildable
         base.GetAdjacent();
         StartCoroutine(Build());
     }
+
+    // ===== Public Static Functions ==============================================================
+
+    public static bool IsCommercial (Type t)  => t == Type.LowDensityCommercial  || t == Type.HighDensityCommercial;
+    public static bool IsIndustrial (Type t)  => t == Type.LowDensityIndustrial  || t == Type.HighDensityIndustrial;
+    public static bool IsResidential (Type t) => t == Type.LowDensityResidential || t == Type.HighDensityResidential;
 
     // ===== Private Functions ====================================================================
 
