@@ -48,5 +48,5 @@ sysinfo.txt
 crashlytics-build.properties
 
 # Folders
-*
+*/
 !*/Assets/*
