@@ -24,18 +24,41 @@ public class SaveManager : MonoBehaviour
     
     // ===== Private Variables ====================================================================
 
-    string str;
+    private string dir;
+    private string roadsFile;
+    private string zonesFile;
+
+    // ===== Start ================================================================================
+    
+    private void Start ()
+    {
+        dir = $"{Application.dataPath}/Saves/{saveName}";
+
+        if (!Directory.Exists(dir))
+            Directory.CreateDirectory(dir);
+
+        roadsFile = $"{dir}/rds.save";
+        zonesFile = $"{dir}/zns.save";
+    }
 
     // ===== Public Functions =====================================================================
 
     public void Save ()
     {
-        string dir = $"{Application.dataPath}/Saves/{saveName}";
+        SaveRoads();
+        SaveZones();
+    } 
 
-        if (!Directory.Exists(dir))
-            Directory.CreateDirectory(dir);
+    public void Load ()
+    {
+        LoadRoads();
+        LoadZones();
+    }
 
-        string roadsFile = $"{Application.dataPath}/Saves/{saveName}/rds.save";
+    // ===== Private Saving Functions =============================================================
+
+    private void SaveRoads ()
+    {
         using (FileStream fs = File.OpenWrite(roadsFile))
         {
             fs.SetLength(0);    // Clear file
@@ -54,8 +77,10 @@ public class SaveManager : MonoBehaviour
             sw.Close();
             fs.Close();
         }
+    }
 
-        string zonesFile = $"{Application.dataPath}/Saves/{saveName}/zns.save";
+    private void SaveZones ()
+    {
         using (FileStream fs = File.OpenWrite(zonesFile))
         {
             fs.SetLength(0);    // Clear file
@@ -73,11 +98,12 @@ public class SaveManager : MonoBehaviour
             sw.Close();
             fs.Close();
         }
-    } 
+    }
 
-    public void Load ()
+    // ===== Private Loading Functions =============================================================
+
+    private void LoadRoads ()
     {
-        string roadsFile = string.Format("{0}/Saves/{1}/rds.save", Application.dataPath, saveName);
         using (FileStream fs = File.OpenRead(roadsFile))
         {
             StreamReader sr = new StreamReader(fs);
@@ -98,8 +124,10 @@ public class SaveManager : MonoBehaviour
 
         foreach (Road r in roadParent.GetComponentsInChildren<Road>())
             r.GetAdjacent();
+    }
 
-        string zonesFile = $"{Application.dataPath}/Saves/{saveName}/zns.save";
+    private void LoadZones ()
+    {
         using (FileStream fs = File.OpenRead(zonesFile))
         {
             StreamReader sr = new StreamReader(fs);
@@ -110,13 +138,16 @@ public class SaveManager : MonoBehaviour
             while ((line = sr.ReadLine()) != null)
             {
                 arr = line.Split(',');
-                GameObject zone = zones[int.Parse(arr[0])];
+                int type = int.Parse(arr[0]);
                 Vector3 pos = new Vector3(float.Parse(arr[1]), float.Parse(arr[2]), float.Parse(arr[3]));
-                Instantiate(zone, pos, Quaternion.identity, zoneParent);
+                Instantiate(zones[type], pos, Quaternion.identity, zoneParent);
             }
 
             sr.Close();
             fs.Close();
         }
+
+        foreach (Zone z in zoneParent.GetComponentsInChildren<Zone>())
+            z.GetAdjacent();
     }
 }
