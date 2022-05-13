@@ -8,17 +8,23 @@ public class Economy : MonoBehaviour
     // ===== Public Variables =====================================================================
     
     [Header("City Information")]
-    public int money;
+
     public int population;
     public int comBuildings;
     public int indBuildings;
 
     [Space(10)]
-    [Header("Taxes")]
+    [Header("Economy")]
+
+    public int money;
+    public int monthlyOperatingCost;
+
+    [Space(10)]
 
     public float comTaxRate;
     public float indTaxRate;
     public float resTaxRate;
+    public float taxMultiplier;
     
     [Space(10)]
     [Header("Demand")]
@@ -44,6 +50,11 @@ public class Economy : MonoBehaviour
     public Slider indDemandSlider;
     public Slider resDemandSlider;
 
+    [Space(10)]
+    [Header("Debug")]
+
+    public bool enableEconomy = true;
+
 
     // ===== Private Variables ====================================================================
 
@@ -60,16 +71,34 @@ public class Economy : MonoBehaviour
         StartCoroutine(KeepTime());
     }
 
-    // ===== Public Functions =====================================================================
+    // ===== Economy ==============================================================================
 
-    public void CollectTaxes () 
+    public void CollectTaxes ()  => money += (int)( taxMultiplier * 
+                                                    (population * resTaxRate) + 
+                                                    (comBuildings * comTaxRate) + 
+                                                    (indBuildings * indTaxRate));
+
+    public void SpendMonthlyOperatingCost () => money -= monthlyOperatingCost;
+
+    public void MonthlyEconomyUpdate ()
     {
-        money += (int)(
-                        (population * resTaxRate) + 
-                        (comBuildings * comTaxRate) + 
-                        (indBuildings * indTaxRate));
+        CollectTaxes();
+        SpendMonthlyOperatingCost();
+        
         UpdateMoneyText();
     }
+
+    public void SpendMoney (int amnt)
+    {
+        if (enableEconomy)
+            money -= amnt;
+
+        UpdateMoneyText();
+    }
+
+    public void StartMonthlyOperatingCost (int amnt) => monthlyOperatingCost += amnt;
+
+    // ===== Buildings ============================================================================
 
     public void BuildZone (Zone.Type type, int density)
     {
@@ -135,8 +164,8 @@ public class Economy : MonoBehaviour
         {
             date = date.AddDays(1);
             
-            if (date.Day == 1)
-                CollectTaxes();
+            if (date.Day == 1) 
+                MonthlyEconomyUpdate();
 
             dayText.text = date.ToString("dd / MMM / yyyy");
 

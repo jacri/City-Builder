@@ -16,14 +16,20 @@ public class Buildable : MonoBehaviour
     public Buildable right;
 
     [Space(10)]
+    [Header("Economy")]
+
+    public int buildCost;
+    public int operationCost;
+
+    [Space(10)]
     [Header("Utility Information")]
 
-    public float buildCost;
     public bool hasPower;
     public bool hasRoadConnection;
 
     // ===== Private Variables ====================================================================
 
+    protected Economy eco;
     protected Vector3 pos;
     protected RaycastHit hit;
     protected MeshRenderer rend;
@@ -38,6 +44,7 @@ public class Buildable : MonoBehaviour
         rend = GetComponent<MeshRenderer>();
         mats = rend.materials;
         pos = transform.position;
+        eco = FindObjectOfType<Economy>();
     }
 
     // ===== Start ================================================================================
@@ -157,6 +164,7 @@ public class Buildable : MonoBehaviour
 
     protected virtual void OnDestroy() 
     {
+        eco.StartMonthlyOperatingCost(-operationCost);
         BuildingManager.buildingPositions.Remove((transform.position.x, transform.position.z));
 
         if (up != null)

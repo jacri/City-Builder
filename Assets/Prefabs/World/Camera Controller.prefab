@@ -93,8 +93,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveName: NewCity
-  roadParent: {fileID: 0}
   road: {fileID: 5489964550349115785, guid: 4415abbb6a58cb8469d8efacabdc3e3e, type: 3}
+  roadParent: {fileID: 0}
+  zones:
+  - {fileID: 3498474683881613594, guid: f8f08a3f5e4417c488c00a4969b732c9, type: 3}
+  - {fileID: 3498474683881613594, guid: f8f08a3f5e4417c488c00a4969b732c9, type: 3}
+  - {fileID: 947421037326714269, guid: c7e4e724e98420e4696da9fe2cd15864, type: 3}
+  - {fileID: 947421037326714269, guid: c7e4e724e98420e4696da9fe2cd15864, type: 3}
+  - {fileID: 7575141461540783668, guid: d28a8494ce63b8c4ebe53ebdf2a069f7, type: 3}
+  - {fileID: 7575141461540783668, guid: d28a8494ce63b8c4ebe53ebdf2a069f7, type: 3}
+  zoneParent: {fileID: 0}
 --- !u!114 &3867266851683121315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,13 +115,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96fefcfc18d5b4e46bbd42cd5c075393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 10000
   population: 0
   comBuildings: 0
   indBuildings: 0
-  comTaxRate: 0
-  indTaxRate: 0
-  resTaxRate: 0
+  money: 10000
+  monthlyOperatingCost: 0
+  comTaxRate: 0.15
+  indTaxRate: 0.15
+  resTaxRate: 0.15
+  taxMultiplier: 100
   resDemand: 0
   indDemand: 0
   comDemand: 0
@@ -126,6 +136,7 @@ MonoBehaviour:
   comDemandSlider: {fileID: 0}
   indDemandSlider: {fileID: 0}
   resDemandSlider: {fileID: 0}
+  enableEconomy: 1
 --- !u!1 &3867266852641969616
 GameObject:
   m_ObjectHideFlags: 0

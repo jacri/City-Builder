@@ -30,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0.100000024}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -118,5 +119,9 @@ MonoBehaviour:
   down: {fileID: 0}
   left: {fileID: 0}
   right: {fileID: 0}
+  buildCost: 50
+  operationCost: 0
+  hasPower: 0
+  hasRoadConnection: 0
   roadMat: {fileID: 2100000, guid: 38f86c42118d84e499751634ed73d78c, type: 2}
   curbMat: {fileID: 2100000, guid: 3fc592f2f3de2a64ca3ba6175e501339, type: 2}

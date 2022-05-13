@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ public class BuildingManager : MonoBehaviour
 
     public GameObject grid;
     public GameObject finishButtons;
+    public GameObject SpendingDisplay;
     public Material deletionHighlightMat;
 
     [Space(10)]
@@ -49,33 +51,44 @@ public class BuildingManager : MonoBehaviour
     // ===== Private Variables ====================================================================
 
     private bool loop;
+    private int buildingCost;
     private bool confirmBuilding;
     private bool currnetlyBuilding = false;
   
     private Ray ray;
+    private Economy eco;
     private Vector3 pos;
     private RaycastHit hit;
+    private Text spendingText;
     private List<GameObject> toBuild;
 
     // ===== Start ================================================================================
     
     private void Awake ()
     {
+        eco = GetComponent<Economy>();
+        spendingText = SpendingDisplay.GetComponentInChildren<Text>();
         toBuild = new List<GameObject>();
+
         buildingPositions = new HashSet<(float, float)>();
         Application.targetFrameRate = 120;
     }
 
     // ==== Build =================================================================================
     
-    private IEnumerator BuildMutliple (Vector3 offset, GameObject building, Transform parent, Action<List<GameObject>, bool> finishAction = null)
+    private IEnumerator BuildMutliple (Vector3 offset, GameObject building, Transform parent, Action<List<GameObject>, bool, Economy, int> finishAction = null)
     {
         while (currnetlyBuilding)
             yield return new WaitForEndOfFrame();
 
+        // Clear previous buildings and setup for new placements
         toBuild.Clear();
         grid.SetActive(true);
         currnetlyBuilding = true;
+
+        buildingCost = 0;
+        spendingText.text = $"- 0";
+        int cost = building.GetComponent<Buildable>().buildCost;
 
         // Wait until click
         while (!Input.GetMouseButton(0))
@@ -84,6 +97,7 @@ public class BuildingManager : MonoBehaviour
         // Clicked
         loop = true;
         finishButtons.SetActive(true);
+        SpendingDisplay.SetActive(true);
 
         while (loop)
         {
@@ -99,6 +113,9 @@ public class BuildingManager : MonoBehaviour
                     {
                         toBuild.Add(Instantiate(building, pos, Quaternion.identity, parent));
                         finishButtons.transform.position = new Vector3(pos.x, 1.5f, pos.z);
+
+                        buildingCost += cost;
+                        spendingText.text = $"- {buildingCost:### ### ###}";
                     }
                 }
             }
@@ -109,9 +126,10 @@ public class BuildingManager : MonoBehaviour
         // Finished building
         grid.SetActive(false);
         finishButtons.SetActive(false);
+        SpendingDisplay.SetActive(false);
 
         if (finishAction != null)
-            finishAction.Invoke(toBuild, confirmBuilding);
+            finishAction.Invoke(toBuild, confirmBuilding, eco, buildingCost);
 
         currnetlyBuilding = false;
     }
@@ -145,14 +163,19 @@ public class BuildingManager : MonoBehaviour
         StartCoroutine(BuildMutliple(zoneOffset, zone, zoneParent, FinishZoneFn));
     }
 
-    private Action<List<GameObject>, bool> FinishZoneFn = delegate (List<GameObject> toBuild, bool confirmBuilding)
+    private Action<List<GameObject>, bool, Economy, int> FinishZoneFn = delegate (List<GameObject> toBuild, bool confirmBuilding, Economy economy, int buildCost)
     {
         if (confirmBuilding == true)
+        {
             toBuild.ForEach(obj => 
             {
                 obj.name = obj.GetComponent<Zone>().type + " Zone " + obj.transform.position;
                 obj.GetComponent<Buildable>().GetAdjacent();
             });
+
+            economy.SpendMoney(buildCost);
+        }
+            
 
         else
             toBuild.ForEach(obj => Destroy(obj));
@@ -168,7 +191,7 @@ public class BuildingManager : MonoBehaviour
         StartCoroutine(BuildMutliple(roadOffset, road, roadParent, FinishRoad));
     }
 
-    private Action<List<GameObject>, bool> FinishRoad = delegate (List<GameObject> toBuild, bool confirmBuilding)
+    private Action<List<GameObject>, bool, Economy, int> FinishRoad = delegate (List<GameObject> toBuild, bool confirmBuilding, Economy economy, int buildCost)
     {
         List<Road> roads = toBuild.Select(obj => obj.GetComponent<Road>()).ToList();
 
@@ -180,6 +203,8 @@ public class BuildingManager : MonoBehaviour
                 obj.GetAdjacent(true);
                 obj.UpdateAdjacentMaterials(roads);
             });
+
+            economy.SpendMoney(buildCost);
         }
 
         // Destroy placeholder roads   
