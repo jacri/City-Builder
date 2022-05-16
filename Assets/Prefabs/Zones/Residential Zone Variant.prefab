@@ -15,6 +15,18 @@ PrefabInstance:
       propertyPath: buildCost
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 1077257734580463289, guid: f8f08a3f5e4417c488c00a4969b732c9, type: 3}
+      propertyPath: buildingOffset.x
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1077257734580463289, guid: f8f08a3f5e4417c488c00a4969b732c9, type: 3}
+      propertyPath: buildingOffset.y
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1077257734580463289, guid: f8f08a3f5e4417c488c00a4969b732c9, type: 3}
+      propertyPath: buildingOffset.z
+      value: -0.275
+      objectReference: {fileID: 0}
     - target: {fileID: 3498474683881613594, guid: f8f08a3f5e4417c488c00a4969b732c9, type: 3}
       propertyPath: m_Name
       value: Residential Zone Variant

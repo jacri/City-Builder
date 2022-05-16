@@ -81,6 +81,7 @@ public class Zone : Buildable
 
         GameObject building = Instantiate(buildingList.RandomBuilding(type), transform.position, Quaternion.identity, buildingList.Parent(type));
         building.GetComponent<Buildable>().GetAdjacent();
+        building.transform.position += building.GetComponent<Buildable>().offset;
 
         FindObjectOfType<Economy>().BuildZone(type, zoneDensity[type]);
 

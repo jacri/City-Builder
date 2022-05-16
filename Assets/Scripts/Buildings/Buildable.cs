@@ -8,6 +8,11 @@ public class Buildable : MonoBehaviour
 
     // ===== Public Variables =====================================================================
 
+    [Header("Building Settings")]
+
+    public Vector3 offset;
+
+    [Space(10)]
     [Header("Adjacent Buildings")]
 
     public Buildable up;
