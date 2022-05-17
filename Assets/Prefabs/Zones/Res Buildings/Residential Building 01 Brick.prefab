@@ -33,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2427998685096656089, guid: 5a9b928bfcda9e649b079d5de5c6c533, type: 3}
       propertyPath: m_Name
-      value: Residential Building 1 Variant
+      value: Residential Building 01 Brick
       objectReference: {fileID: 0}
     - target: {fileID: 2427998685096656093, guid: 5a9b928bfcda9e649b079d5de5c6c533, type: 3}
       propertyPath: m_RootOrder
@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2427998685096656093, guid: 5a9b928bfcda9e649b079d5de5c6c533, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2427998685096656093, guid: 5a9b928bfcda9e649b079d5de5c6c533, type: 3}
       propertyPath: m_LocalPosition.y
@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2427998685096656093, guid: 5a9b928bfcda9e649b079d5de5c6c533, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2427998685096656093, guid: 5a9b928bfcda9e649b079d5de5c6c533, type: 3}
       propertyPath: m_LocalRotation.w

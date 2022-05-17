@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8913272995603311166
+--- !u!1001 &6336934010776124739
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5729148104863288801, guid: 23f01bffcb00e10488a53fd7f870bfde, type: 3}
       propertyPath: m_Name
-      value: Residential Building 02 Sandstone Variant
+      value: Residential Building 02 Stone Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5729148104863288805, guid: 23f01bffcb00e10488a53fd7f870bfde, type: 3}
       propertyPath: m_RootOrder
@@ -58,6 +58,6 @@ PrefabInstance:
     - target: {fileID: 5729148104863288807, guid: 23f01bffcb00e10488a53fd7f870bfde, type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 2100000, guid: b646061da96b3c146b3211c00beeb157, type: 2}
+      objectReference: {fileID: 2100000, guid: 9b3823c95dfe5544392ce1ffd888cee0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23f01bffcb00e10488a53fd7f870bfde, type: 3}

@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8099568125040072907
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6897745098684639904, guid: e074a24d2a76cf146a4022d67e06ecd9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897745098684639904, guid: e074a24d2a76cf146a4022d67e06ecd9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897745098684639904, guid: e074a24d2a76cf146a4022d67e06ecd9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897745098684639904, guid: e074a24d2a76cf146a4022d67e06ecd9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897745098684639904, guid: e074a24d2a76cf146a4022d67e06ecd9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897745098684639904, guid: e074a24d2a76cf146a4022d67e06ecd9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897745098684639904, guid: e074a24d2a76cf146a4022d67e06ecd9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897745098684639904, guid: e074a24d2a76cf146a4022d67e06ecd9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897745098684639904, guid: e074a24d2a76cf146a4022d67e06ecd9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897745098684639904, guid: e074a24d2a76cf146a4022d67e06ecd9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897745098684639904, guid: e074a24d2a76cf146a4022d67e06ecd9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897745098684639906, guid: e074a24d2a76cf146a4022d67e06ecd9, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9b3823c95dfe5544392ce1ffd888cee0, type: 2}
+    - target: {fileID: 6897745098684639908, guid: e074a24d2a76cf146a4022d67e06ecd9, type: 3}
+      propertyPath: m_Name
+      value: Residential Building 17 Stone
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e074a24d2a76cf146a4022d67e06ecd9, type: 3}
