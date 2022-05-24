@@ -1167,7 +1167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8700646755584833483, guid: 305861806e5a5e9489d365ca5c27b0d0, type: 3}
       propertyPath: lowDensityIndustrial.Array.size
-      value: 1
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8700646755584833483, guid: 305861806e5a5e9489d365ca5c27b0d0, type: 3}
       propertyPath: lowDensityResidential.Array.size
@@ -1188,7 +1188,35 @@ PrefabInstance:
     - target: {fileID: 8700646755584833483, guid: 305861806e5a5e9489d365ca5c27b0d0, type: 3}
       propertyPath: lowDensityIndustrial.Array.data[0]
       value: 
-      objectReference: {fileID: 1334724827703733720, guid: 4f862394f8e32924cb8685ddee0ac5e0, type: 3}
+      objectReference: {fileID: 793641982081423187, guid: 84d8b6741b911c348884f11bd898c5c2, type: 3}
+    - target: {fileID: 8700646755584833483, guid: 305861806e5a5e9489d365ca5c27b0d0, type: 3}
+      propertyPath: lowDensityIndustrial.Array.data[1]
+      value: 
+      objectReference: {fileID: 2936877226414306349, guid: babfc526bd463854a844642c72e3b691, type: 3}
+    - target: {fileID: 8700646755584833483, guid: 305861806e5a5e9489d365ca5c27b0d0, type: 3}
+      propertyPath: lowDensityIndustrial.Array.data[2]
+      value: 
+      objectReference: {fileID: 2362239388127993449, guid: b000d3add8e724e49bdc640e185020a9, type: 3}
+    - target: {fileID: 8700646755584833483, guid: 305861806e5a5e9489d365ca5c27b0d0, type: 3}
+      propertyPath: lowDensityIndustrial.Array.data[3]
+      value: 
+      objectReference: {fileID: 2228178314829088447, guid: d8f87bd3ed9005e46ade10bf5dc53ead, type: 3}
+    - target: {fileID: 8700646755584833483, guid: 305861806e5a5e9489d365ca5c27b0d0, type: 3}
+      propertyPath: lowDensityIndustrial.Array.data[4]
+      value: 
+      objectReference: {fileID: 6722661486828790023, guid: 56760c5905419164183c1f87b67286d3, type: 3}
+    - target: {fileID: 8700646755584833483, guid: 305861806e5a5e9489d365ca5c27b0d0, type: 3}
+      propertyPath: lowDensityIndustrial.Array.data[5]
+      value: 
+      objectReference: {fileID: 6253758844267253596, guid: 81a82e8b190b56d4aa055562cb223b82, type: 3}
+    - target: {fileID: 8700646755584833483, guid: 305861806e5a5e9489d365ca5c27b0d0, type: 3}
+      propertyPath: lowDensityIndustrial.Array.data[6]
+      value: 
+      objectReference: {fileID: 8571257822660726226, guid: d9a4475fdc8f19f499bdf9d6e995282e, type: 3}
+    - target: {fileID: 8700646755584833483, guid: 305861806e5a5e9489d365ca5c27b0d0, type: 3}
+      propertyPath: lowDensityIndustrial.Array.data[7]
+      value: 
+      objectReference: {fileID: 7931484110514246251, guid: b0ce145e2a44f484697f60ddfee00361, type: 3}
     - target: {fileID: 8700646755584833483, guid: 305861806e5a5e9489d365ca5c27b0d0, type: 3}
       propertyPath: lowDensityResidential.Array.data[0]
       value: 
