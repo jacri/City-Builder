@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e4536c7ec48ca74c82b26bb4f00d00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
   up: {fileID: 0}
   down: {fileID: 0}
   left: {fileID: 0}
@@ -123,4 +124,4 @@ MonoBehaviour:
   maxConstructionDelay: 2.5
   minConstructionTime: 2
   maxConstructionTime: 5
-  constructionIndicator: {fileID: 1888928268278688222, guid: 0328a5c15ca3468469d7965d3d8cab61, type: 3}
+  constructionIndicator: {fileID: 3381801830540117380, guid: e7432c6770e6e7348ad9eb4dd765a042, type: 3}

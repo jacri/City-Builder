@@ -27,6 +27,10 @@ PrefabInstance:
       propertyPath: buildingOffset.z
       value: -0.275
       objectReference: {fileID: 0}
+    - target: {fileID: 1077257734580463289, guid: f8f08a3f5e4417c488c00a4969b732c9, type: 3}
+      propertyPath: constructionIndicator
+      value: 
+      objectReference: {fileID: 3381801830540117380, guid: e7432c6770e6e7348ad9eb4dd765a042, type: 3}
     - target: {fileID: 3498474683881613594, guid: f8f08a3f5e4417c488c00a4969b732c9, type: 3}
       propertyPath: m_Name
       value: Residential Zone Variant
