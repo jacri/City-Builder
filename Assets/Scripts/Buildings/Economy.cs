@@ -46,6 +46,15 @@ public class Economy : MonoBehaviour
     public Text popText;
     public Text moneyText;
     public Text speedText;
+
+    [Space(10)]
+
+    public Text resTaxText;
+    public Text comTaxText;
+    public Text indTaxText;
+
+    [Space(10)]
+    
     public Slider comDemandSlider;
     public Slider indDemandSlider;
     public Slider resDemandSlider;
@@ -154,6 +163,24 @@ public class Economy : MonoBehaviour
         resDemandSlider.value = resDemand;
         comDemandSlider.value = comDemand;
         indDemandSlider.value = indDemand;
+    }
+
+    public void UpdateResTaxFromUI (System.Single sliderVal)
+    {
+        resTaxText.text = $"{sliderVal:P0}";
+        resTaxRate = (float)Math.Round(sliderVal, 2);
+    }
+
+    public void UpdateComTaxFromUI (System.Single sliderVal)
+    {
+        comTaxText.text = $"{sliderVal:P0}";
+        comTaxRate = (float)Math.Round(sliderVal, 2);
+    }
+
+    public void UpdateIndTaxFromUI (System.Single sliderVal)
+    {
+        indTaxText.text = $"{sliderVal:P0}";
+        indTaxRate = (float)Math.Round(sliderVal, 2);
     }
 
     // ===== Private Functions ====================================================================
