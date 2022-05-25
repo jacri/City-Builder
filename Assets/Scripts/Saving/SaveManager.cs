@@ -55,6 +55,8 @@ public class SaveManager : MonoBehaviour
         LoadZones();
     }
 
+    public void Quit () => Application.Quit();
+
     // ===== Private Saving Functions =============================================================
 
     private void SaveRoads ()
