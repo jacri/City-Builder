@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5660914797452072779, guid: 3938266f8d30f924a8ea3d4d90b82a96, type: 3}
+      propertyPath: offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660914797452072779, guid: 3938266f8d30f924a8ea3d4d90b82a96, type: 3}
+      propertyPath: offset.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6559881477743047952, guid: 3938266f8d30f924a8ea3d4d90b82a96, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
@@ -65,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6559881477743047958, guid: 3938266f8d30f924a8ea3d4d90b82a96, type: 3}
       propertyPath: m_Name
-      value: Residential Building 13 Brick
+      value: Residential Building 13 Brick Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6559881477743047959, guid: 3938266f8d30f924a8ea3d4d90b82a96, type: 3}
       propertyPath: m_Size.x
