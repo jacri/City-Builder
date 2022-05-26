@@ -8,15 +8,9 @@ public class Zone : Buildable
 
     public enum Type 
     { 
-        LowDensityCommercial,
-        HighDensityCommercial,
-
-
-        LowDensityIndustrial,
-        HighDensityIndustrial,
-
-        LowDensityResidential,
-        HighDensityResidential,
+        Residential = 0,
+        Commercial  = 1,
+        Industrial  = 2,
     }
 
     // ===== Public Variables =====================================================================
@@ -34,13 +28,9 @@ public class Zone : Buildable
 
     public static Dictionary<Type, int> zoneDensity = new Dictionary<Type, int>() 
     {
-        { Type.LowDensityCommercial,  1 },
-        { Type.LowDensityIndustrial,  1 },
-        { Type.LowDensityResidential, 1 },
-
-        { Type.HighDensityCommercial,  2 },
-        { Type.HighDensityIndustrial,  2 },
-        { Type.HighDensityResidential, 2 },
+        { Type.Residential, 1 },
+        { Type.Commercial,  1 },
+        { Type.Industrial,  1 },
     };
 
     // ===== Protected Variables ==================================================================
@@ -65,9 +55,9 @@ public class Zone : Buildable
 
     // ===== Public Static Functions ==============================================================
 
-    public static bool IsCommercial (Type t)  => t == Type.LowDensityCommercial  || t == Type.HighDensityCommercial;
-    public static bool IsIndustrial (Type t)  => t == Type.LowDensityIndustrial  || t == Type.HighDensityIndustrial;
-    public static bool IsResidential (Type t) => t == Type.LowDensityResidential || t == Type.HighDensityResidential;
+    public static bool IsCommercial (Type t)  => t == Type.Commercial;
+    public static bool IsIndustrial (Type t)  => t == Type.Industrial;
+    public static bool IsResidential (Type t) => t == Type.Residential;
 
     // ===== Private Functions ====================================================================
 

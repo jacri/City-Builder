@@ -31,18 +31,11 @@ public class BuildingManager : MonoBehaviour
     public Transform zoneParent;
 
     [Space(10)]
-    [Header("Low Density Zones")]
+    [Header("Zones")]
 
-    public GameObject lowDensityCommercialZone;
-    public GameObject lowDensityIndustrialZone;
-    public GameObject lowDensityResidentialZone;
-
-    [Space(10)]
-    [Header("High Density Zones")]
-
-    public GameObject highDensityCommercialZone;
-    public GameObject highDensityIndustrialZone;
-    public GameObject highDensityResidentialZone;
+    public GameObject residentialZone;
+    public GameObject commercialZone;
+    public GameObject industrialZone;
 
     // ===== Public Static Variables ==============================================================
 
@@ -149,13 +142,9 @@ public class BuildingManager : MonoBehaviour
 
         GameObject zone = typeString switch 
         {
-            "LowDensityCommercial"  => lowDensityCommercialZone,
-            "LowDensityIndustrial"  => lowDensityIndustrialZone,
-            "LowDensityResidential" => lowDensityResidentialZone, 
-
-            "HighDensityCommercial"  => highDensityCommercialZone,
-            "HighDensityIndustrial"  => highDensityIndustrialZone,
-            "HighDensityResidential" => highDensityResidentialZone, 
+            "Residential" => residentialZone, 
+            "Commercial"  => commercialZone,
+            "Industrial"  => industrialZone,
 
             _ => throw new System.ArgumentException("Error - please use valid zone type"),
         };

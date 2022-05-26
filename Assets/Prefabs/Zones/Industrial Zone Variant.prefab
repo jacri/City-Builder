@@ -9,10 +9,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1077257734580463289, guid: f8f08a3f5e4417c488c00a4969b732c9, type: 3}
       propertyPath: type
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1077257734580463289, guid: f8f08a3f5e4417c488c00a4969b732c9, type: 3}
       propertyPath: buildCost
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1077257734580463289, guid: f8f08a3f5e4417c488c00a4969b732c9, type: 3}
+      propertyPath: maxConstructionDelay
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1077257734580463289, guid: f8f08a3f5e4417c488c00a4969b732c9, type: 3}
+      propertyPath: minConstructionDelay
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1077257734580463289, guid: f8f08a3f5e4417c488c00a4969b732c9, type: 3}
