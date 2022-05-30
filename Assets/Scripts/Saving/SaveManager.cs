@@ -2,6 +2,7 @@ using System.IO;
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 public class SaveManager : MonoBehaviour
 {
@@ -21,12 +22,21 @@ public class SaveManager : MonoBehaviour
 
     public GameObject[] zones;
     public Transform zoneParent;
+
+    [Space(10)]
+    [Header("Buildings")]
+
+    public GameObject[][] buildings;
+    public Transform[] buildingParents;
+
     
     // ===== Private Variables ====================================================================
 
     private string dir;
+    private string cityFile;
     private string roadsFile;
     private string zonesFile;
+    private string buildingFile;
 
     // ===== Start ================================================================================
     
@@ -37,27 +47,56 @@ public class SaveManager : MonoBehaviour
         if (!Directory.Exists(dir))
             Directory.CreateDirectory(dir);
 
+        cityFile = $"{dir}/cty.save";
         roadsFile = $"{dir}/rds.save";
         zonesFile = $"{dir}/zns.save";
+        buildingFile = $"{dir}/bld.save";
+
+        buildings = new GameObject[3][];
+        buildings[0] = zoneParent.GetComponent<ZoneBuildingList>().residential;
+        buildings[1] = zoneParent.GetComponent<ZoneBuildingList>().commercial;
+        buildings[2] = zoneParent.GetComponent<ZoneBuildingList>().industrial;
     }
 
     // ===== Public Functions =====================================================================
 
     public void Save ()
     {
+        SaveCityInfo();
         SaveRoads();
         SaveZones();
+        SaveBuildings();
     } 
 
     public void Load ()
     {
+        LoadCityInfo();
         LoadRoads();
         LoadZones();
+        LoadBuildings();
+
+        foreach (Buildable b in FindObjectsOfType<Buildable>())
+            b.GetAdjacent();
     }
 
     public void Quit () => Application.Quit();
 
     // ===== Private Saving Functions =============================================================
+
+    private void SaveCityInfo ()
+    {
+        using (FileStream fs = File.OpenWrite(cityFile))
+        {
+            fs.SetLength(0);    // Clear file
+            StreamWriter sw = new StreamWriter(fs);
+
+            Economy eco = FindObjectOfType<Economy>();
+            sw.Write($"{eco.money},{eco.resTaxRate},{eco.comTaxRate},{eco.indTaxRate},{eco.population}");
+
+            sw.Close();
+            fs.Close();
+        }
+    }
 
     private void SaveRoads ()
     {
@@ -102,7 +141,56 @@ public class SaveManager : MonoBehaviour
         }
     }
 
+    private void SaveBuildings ()
+    {
+        using (FileStream fs = File.OpenWrite(buildingFile))
+        {
+            fs.SetLength(0);    // Clear file
+            StreamWriter sw = new StreamWriter(fs);
+
+            foreach (Buildable b in FindObjectsOfType<Buildable>())
+            {
+                // Subtracting 1 from buildingIndex to match with ZoneBuildingList array
+                if (b.name.Contains("Residential Building"))
+                    sw.Write($"{(int)0},{(int)int.Parse(Regex.Match(b.name, @"\d+").Value) - 1},{b.transform.position.x},{b.transform.position.y},{b.transform.position.z}\n");
+
+                else if (b.name.Contains("Commercial Building"))
+                    sw.Write($"{(int)1},{(int)int.Parse(Regex.Match(b.name, @"\d+").Value) - 1},{b.transform.position.x},{b.transform.position.y},{b.transform.position.z}\n");
+
+                else if (b.name.Contains("Industrial Building"))
+                    sw.Write($"{(int)2},{(int)int.Parse(Regex.Match(b.name, @"\d+").Value) - 1},{b.transform.position.x},{b.transform.position.y},{b.transform.position.z}\n");
+            }
+
+            sw.Close();
+            fs.Close();
+        }
+    }
+
     // ===== Private Loading Functions =============================================================
+
+    private void LoadCityInfo ()
+    {
+        using (FileStream fs = File.OpenRead(cityFile))
+        {
+            StreamReader sr = new StreamReader(fs);
+            Economy eco = FindObjectOfType<Economy>();
+
+            string line = sr.ReadLine();
+            string[] arr = line.Split(',');
+
+            eco.money = int.Parse(arr[0]);
+            eco.UpdateMoneyText();
+            eco.UpdateResTaxFromUI(float.Parse(arr[1]));
+            eco.UpdateComTaxFromUI(float.Parse(arr[2]));
+            eco.UpdateIndTaxFromUI(float.Parse(arr[3]));
+            eco.population = int.Parse(arr[4]);
+            eco.UpdatePopulationText();
+            eco.UpdateDemand();
+
+            sr.Close();
+            fs.Close();
+        }
+    }
 
     private void LoadRoads ()
     {
@@ -123,9 +211,6 @@ public class SaveManager : MonoBehaviour
             sr.Close();
             fs.Close();
         }
-
-        foreach (Road r in roadParent.GetComponentsInChildren<Road>())
-            r.GetAdjacent();
     }
 
     private void LoadZones ()
@@ -148,8 +233,28 @@ public class SaveManager : MonoBehaviour
             sr.Close();
             fs.Close();
         }
+    }
 
-        foreach (Zone z in zoneParent.GetComponentsInChildren<Zone>())
-            z.GetAdjacent();
+    private void LoadBuildings ()
+    {
+        using (FileStream fs = File.OpenRead(buildingFile))
+        {
+            StreamReader sr = new StreamReader(fs);
+
+            string line;
+            string[] arr;
+
+            while ((line = sr.ReadLine()) != null)
+            {
+                arr = line.Split(',');
+                int type = int.Parse(arr[0]);
+                int buildingIndex = int.Parse(arr[1]);
+                Vector3 pos = new Vector3(float.Parse(arr[2]), float.Parse(arr[3]), float.Parse(arr[4]));
+                Instantiate(buildings[type][buildingIndex], pos, Quaternion.identity, buildingParents[type]);
+            }
+
+            sr.Close();
+            fs.Close();
+        }
     }
 }

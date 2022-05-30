@@ -119,9 +119,9 @@ MonoBehaviour:
   operationCost: 0
   hasPower: 0
   hasRoadConnection: 0
-  type: 0
-  minConstructionDelay: 25
-  maxConstructionDelay: 50
+  type: 1
+  minConstructionDelay: 1
+  maxConstructionDelay: 3
   minConstructionTime: 2
   maxConstructionTime: 5
   constructionIndicator: {fileID: 3381801830540117380, guid: e7432c6770e6e7348ad9eb4dd765a042, type: 3}
