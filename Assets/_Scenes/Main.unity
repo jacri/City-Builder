@@ -746,6 +746,22 @@ PrefabInstance:
       propertyPath: zones.Array.data[2]
       value: 
       objectReference: {fileID: 7575141461540783668, guid: d28a8494ce63b8c4ebe53ebdf2a069f7, type: 3}
+    - target: {fileID: 3867266851623830050, guid: 7155cd4ffd8a22848a13e0421d8b5141, type: 3}
+      propertyPath: buildingParents.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3867266851623830050, guid: 7155cd4ffd8a22848a13e0421d8b5141, type: 3}
+      propertyPath: buildingParents.Array.data[0]
+      value: 
+      objectReference: {fileID: 1678217712}
+    - target: {fileID: 3867266851623830050, guid: 7155cd4ffd8a22848a13e0421d8b5141, type: 3}
+      propertyPath: buildingParents.Array.data[1]
+      value: 
+      objectReference: {fileID: 202950309}
+    - target: {fileID: 3867266851623830050, guid: 7155cd4ffd8a22848a13e0421d8b5141, type: 3}
+      propertyPath: buildingParents.Array.data[2]
+      value: 
+      objectReference: {fileID: 2096781960}
     - target: {fileID: 3867266851623830051, guid: 7155cd4ffd8a22848a13e0421d8b5141, type: 3}
       propertyPath: grid
       value: 
